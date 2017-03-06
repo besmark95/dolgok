@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 
-
 namespace xor_bruteforce
 {
     class Program
