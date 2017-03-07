@@ -2,6 +2,7 @@
 
 namespace xor_bruteforce
 {
+    //a többi core.cs is ugyan ez, az 1. kommentezve van
     static class core4prog
     {
 
@@ -92,7 +93,7 @@ namespace xor_bruteforce
 
             egesz = arrayka[a] + arrayka[b] + arrayka[c] + arrayka[d] + arrayka[e] + arrayka[f] + arrayka[g] + arrayka[h] + arrayka[i] + arrayka[j];
             if (egesz.Length > maxhossz)
-                return "Max hossz elérve!";
+                Program.vege = true;
 
             a++;
 

@@ -2,12 +2,11 @@
 
 namespace xor_bruteforce
 {
-    //a többi core.cs is ugyan ez
-
+    //a többi core.cs is ugyan ez, az 1. kommentezve van
 
     static class core1prog
     {
-        //karakterkészletek
+        //karakter arrayok
         public static char[] upper = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', };
         public static char[] lower = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', };
         public static char[] number = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -17,9 +16,10 @@ namespace xor_bruteforce
 
         public static int a, b, c, d, e, f, g, h, i, j = 0;
 
+        //ez lesz a végleges
         public static string[] arrayka;
 
-        //karakterkészlet összerakása
+        //összerakja a megadott karakterekből a kulcs karakterkészletét
         public static void arraybuilder(int up, int low, int num, int spec, int rev)
         {
             int arraylenght = 0;
@@ -47,8 +47,8 @@ namespace xor_bruteforce
 
             char[] chararray = sztring.ToCharArray();
 
+            //az üres elem miatt kell még 1 hely
             string[] stringarray = new string[arraylenght + 1];
-            //az első elem üres
             stringarray[0] = null;
 
             for (int x = 1; x < arraylenght + 1; x++)
@@ -59,6 +59,7 @@ namespace xor_bruteforce
             if (rev >= 1)
                 Array.Reverse(stringarray);
 
+            //kulcs karakterkészlete
             arrayka = stringarray;
         }
 
@@ -91,15 +92,18 @@ namespace xor_bruteforce
                 Console.WriteLine("A minimum rövidség túl nagy! A beírt érték: " + min);
         }
 
-        //a kulcs összerakása
+        //összerakja a kulcsot
         public static string strconst(int maxhossz)
         {
+            //az összerakott "egész" kulcs
             string egesz;
 
-
+            //összerakott kulcs
             egesz = arrayka[a] + arrayka[b] + arrayka[c] + arrayka[d] + arrayka[e] + arrayka[f] + arrayka[g] + arrayka[h] + arrayka[i] + arrayka[j];
+
+            //ha eléri a max hosszt akkor leáll
             if (egesz.Length > maxhossz)
-                return "Max hossz elérve!";
+                Program.vege = true;
 
             a++;
 

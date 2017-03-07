@@ -1,8 +1,4 @@
-c:\users\besenyeimark\documents\visual studio 2015\Projects\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
-c:\users\besenyeimark\documents\visual studio 2015\Projects\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe
-c:\users\besenyeimark\documents\visual studio 2015\Projects\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.pdb
-c:\users\besenyeimark\documents\visual studio 2015\Projects\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe
-c:\users\besenyeimark\documents\visual studio 2015\Projects\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.pdb
-C:\Users\BesenyeiMark\Documents\GitHub\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
-C:\Users\BesenyeiMark\Documents\GitHub\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe
-C:\Users\BesenyeiMark\Documents\GitHub\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.pdb
+C:\Users\BesenyeiMark\Desktop\Új mappa\xor_bruteforce\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
+C:\Users\BesenyeiMark\Desktop\Új mappa\xor_bruteforce\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe
+P:\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
+P:\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe

@@ -10,14 +10,23 @@ namespace xor_bruteforce
 {
     class Program
     {
-        //szavak az ellenőruéshez
-        static string[] szavak = { "feladat", "szöveg", };
+		//a debug mappában(/xor_bruteforce/xor_bruteforce/bin/Debug) az indítófájl mellett található
+		//egy lorem fájl ami lorem ipsumot tartalmazza ékezet nélküli ezért nincs benne hiba
+		//egy ekezetes fájl ami ékezetes szöveget tartalmaz amit már nem jól jelenít meg
+		//mindkét fájl az 123 kulccsal lett kódolva
+		//más kulcsokkal szintén fenn áll ez a hiba
+
+		//futtatni mono segítségével szoktam : mono xor_bruteforce.exe inputfájl
+		//a beállításait csak programkódon belül lehet még változtatni
+
+
+        //szavak az ellenőrzéshez
+        static string[] szavak = { "feladat", "szöveg"," ipsum " };
 
         static string kodoltszoveg;
+        static int probalkozas = 1;
 
-        public static int probalkozas = 1;
-
-        public static bool megoldva = false;
+        public static bool vege = false;
 
         static Thread core1 = new Thread(new ThreadStart(Core1));
         static Thread core2 = new Thread(new ThreadStart(Core2));
@@ -27,23 +36,15 @@ namespace xor_bruteforce
         //beállítások
         static int minhossz = 0;
         static int maxhossz = 10;
-        // 1 = igen | 2 = nem
+        // 1 = igen | 0 = nem
         static int lehet_nagybetu = 0;
         static int lehet_kisbetu = 0;
         static int lehet_szam = 1;
         static int lehet_special = 0;
 
         static string input = "";
-        static string output = "";
-
-        //készít egy kódolt szöveget
-        static string feladatkeszites()
-        {
-            string text;
-            text = exor("A titkositt szöveges feladat", "1234567");
-
-            return text;
-        }
+		//jelenleg nincs output
+        //static string output = "";
 
         //static void Main(string[] args)
         static void Main(string[] args)
@@ -52,36 +53,43 @@ namespace xor_bruteforce
             {
                 if (args.Length > 0)
                     input = args[0];
-                if (args.Length > 1)
+                /*if (args.Length > 1)
                     output = args[1];
+                    */
             }
+
+            /*
+            //ez a rész csak arra van hogy megmutassa hogy azt az ékezetes szöveget 
+            //amit ezzel kódolunk úgy adja vissza dekódolás után ahogy volt
+            string elsostring = exor("Ékezetes szöveg éáűúőpóü", "kulcs");
+            string dekodolva = exor(elsostring, "kulcs");
+            Console.WriteLine(dekodolva);
+            Console.ReadLine();
+            */
+            
+
+
+
             //minhossz beállítása
             core1prog.minhossz(minhossz);
             core2prog.minhossz(minhossz);
             core3prog.minhossz(minhossz);
             core4prog.minhossz(minhossz);
 
-            //feladatkészítés hívása
-            //kodoltszoveg = feladatkeszites();
-
             //feladat beolvasása
-            string szoveg = System.IO.File.ReadAllText(input);
-            kodoltszoveg = exor(szoveg, "123");
-            Console.WriteLine(kodoltszoveg);
-            Console.ReadKey();
+            //UTF7-ben jobb az olvashatóság
+            string szoveg = File.ReadAllText(input, Encoding.UTF7);
+            //kodoltszoveg változót fogja törni
+            kodoltszoveg = szoveg;
 
             //kiírás fájlba
             //System.IO.File.WriteAllLines(output, szoveg);
-
+			Console.WriteLine("\n");
             //multithread indítása
-            /*
             core1.Start();
             core2.Start();
             core3.Start();
             core4.Start();
-            */
-
-
 
         }
 
@@ -96,13 +104,13 @@ namespace xor_bruteforce
             return new string(output);
         }
 
-        //dedolt szöveg tesztelése
+        //dekódolt szöveg tesztelése
         static void teszt(string text, string key)
         {
             //tartalmaz-e megadott szavakat
             if (szavak.Any(text.Contains))
             {
-                Console.WriteLine("Megoldás: " + text);
+                Console.WriteLine("Megoldás: \n" + text);
                 Console.WriteLine("Próba: " + probalkozas);
                 Console.WriteLine("Kulcs: " + key);
             }
@@ -118,11 +126,11 @@ namespace xor_bruteforce
                     && text.Contains("nem")
                     && text.Contains("ha"))
                 {
-                    Console.WriteLine("Megoldás: " + text);
+                    Console.WriteLine("Megoldás: \n" + text);
                     Console.WriteLine("Próba: " + probalkozas);
                     Console.WriteLine("Kulcs: " + key);
                 }
-            }
+            }        
         }
 
         
@@ -135,20 +143,22 @@ namespace xor_bruteforce
             string kulcs;
             //páratlan számú kulcs miatt 1x
             kulcs = core1prog.strconst(maxhossz);
-            while (megoldva == false)
+            while (vege == false)
             {
                 //2x generál kulcsot hogy páratlan maradjon
                 kulcs = core1prog.strconst(maxhossz);
                 kulcs = core1prog.strconst(maxhossz);
                 //időnkénti kiíratás
-                if (probalkozas > checkpoint + 20000000)
+				//nem lesz pontos a próbálkozás száma mert közben a többi is növeli a változó értékét
+                if (probalkozas > checkpoint + 50000000)
                 {
                     Console.WriteLine("Próba: " + probalkozas);
                     Console.WriteLine("Kulcs: " + kulcs);
+                    Console.WriteLine(exor(kodoltszoveg, kulcs));
                     checkpoint = probalkozas;
                 }
                 probalkozas++;
-
+                
                 //szöveg tesztelése
                 teszt(exor(kodoltszoveg, kulcs), kulcs);
             }
@@ -161,7 +171,7 @@ namespace xor_bruteforce
             //2x hogy páros legyen
             kulcs = core2prog.strconst(maxhossz);
             kulcs = core2prog.strconst(maxhossz);
-            while (megoldva == false)
+            while (vege == false)
             {
                 //2x hogy páros maradjon
                 kulcs = core2prog.strconst(maxhossz);
@@ -177,7 +187,7 @@ namespace xor_bruteforce
             core3prog.arraybuilder(lehet_nagybetu, lehet_kisbetu, lehet_szam, lehet_special, 1);
             string kulcs;
             kulcs = core3prog.strconst(maxhossz);
-            while (megoldva == false)
+            while (vege == false)
             {
                 kulcs = core3prog.strconst(maxhossz);
                 kulcs = core3prog.strconst(maxhossz);
@@ -193,7 +203,7 @@ namespace xor_bruteforce
             string kulcs;
             kulcs = core4prog.strconst(maxhossz);
             kulcs = core4prog.strconst(maxhossz);
-            while (megoldva == false)
+            while (vege == false)
             {
                 kulcs = core4prog.strconst(maxhossz);
                 kulcs = core4prog.strconst(maxhossz);
