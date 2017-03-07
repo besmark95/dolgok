@@ -1,6 +1,0 @@
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/bin/Debug/xor_bruteforce.exe.config
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/bin/Debug/xor_bruteforce.exe.mdb
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/bin/Debug/xor_bruteforce.exe
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/obj/Debug/xor_bruteforce.exe
-/home/besmark/Asztal/xor_bruteforce/xor_bruteforce/obj/Debug/xor_bruteforce.exe.mdb
