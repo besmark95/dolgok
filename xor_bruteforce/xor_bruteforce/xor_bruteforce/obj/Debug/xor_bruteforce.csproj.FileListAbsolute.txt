@@ -1,0 +1,4 @@
+C:\Users\BesenyeiMark\Desktop\Új mappa\xor_bruteforce\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
+C:\Users\BesenyeiMark\Desktop\Új mappa\xor_bruteforce\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe
+P:\xor_bruteforce\xor_bruteforce\bin\Debug\xor_bruteforce.exe.config
+P:\xor_bruteforce\xor_bruteforce\obj\Debug\xor_bruteforce.exe
